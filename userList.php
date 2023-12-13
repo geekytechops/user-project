@@ -1,5 +1,6 @@
 <?php 
-
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET");
 require_once('config.php');
 $clientIp=$_SERVER['REMOTE_ADDR'];
 $insertIp=$db->execute("INSERT INTO ip_checklist(ip_address)VALUES('$clientIp')");
@@ -12,8 +13,11 @@ if($insertIp){
         echo "Request Declined: This IP Address requested the data more than 3 times";
     }else{
 
-        
-        
+        $userList=$db->execute("SELECT username from users");
+        while($userResult=mysqli_fetch_array($userList)){
+            echo $userResult['username'];
+        }
+
     }
 
 }
