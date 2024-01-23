@@ -35,6 +35,7 @@ if(isset($_GET['submit'])){
 <body>
 
 <form method="get">
+<input type="text">
     <input type="submit" name="submit" id="submit" value="Get Users List"> 
 </form>
 
